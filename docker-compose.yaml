@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+#Database
+  db:
+    image: mysql:5
+    volumes: 
+      - './db_data/:/var/lib/mysql'
+    restart: always
+    container_name: db
+    environment: 
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_HOST: '%'
+    networks:
+      - wordpress
+    command: --default-authentication-plugin=mysql_native_password
+  #phpmyadmin
+  phpmyadmin:  
+    depends_on: 
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    container_name: phpmyadmin
+    ports: 
+      - '8080:80'
+    environment: 
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root_password
+    networks: 
+      - wordpress
+  #Wordpress
+  wordpress:
+    depends_on: 
+      - db
+    image: wordpress
+    ports: 
+      - '8000:80'
+    restart: always
+    volumes: ['./wordpress:/var/www/html']
+    container_name: wordpress
+    environment: 
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    networks: 
+      - wordpress
+networks: 
+  wordpress:
+volumes: 
+  db_data:
