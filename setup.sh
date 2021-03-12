@@ -1,9 +1,10 @@
 #!/bin/bash
 
-sudo yum update -y
-sudo amazon-linux-extras install docker
-sudo service docker start
-sudo usermod -a -G docker ec2-user
-newgrp docker
+mkdir wordpress && cd wordpress
+mkdir nginx-conf
+cp ~/docker-website/nginx.conf nginx-conf/nginx.conf
 docker-compose up -d
-echo "ServerName localhost" | sudo tee /etc/apache2/conf.d/fqdn
+crontab -l > mycron
+echo "0 12 * * * /home/sammy/wordpress/ssl_renew.sh >> /var/log/cron.log 2>&1" >> mycron
+crontab mycron
+rm mycron
