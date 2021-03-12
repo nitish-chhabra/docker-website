@@ -1,5 +1,7 @@
-#!/bin/bash
-
+#!/bin/bash -ex
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+echo BEGIN
+date '+%Y-%m-%d %H:%M:%S'
 sudo yum update -y
 sudo yum install git -y
 sudo amazon-linux-extras install docker -y
@@ -13,4 +15,4 @@ git clone https://github.com/traveller-scientist/docker-website.git
 cd docker-website
 chmod +x setup.sh
 chmod +x ssl_renew.sh
-sudo reboot
+echo END
