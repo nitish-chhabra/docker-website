@@ -9,10 +9,14 @@ sudo service docker start
 sudo usermod -a -G docker ec2-user
 newgrp docker
 sudo chkconfig docker on
+export HOME=/root
 sudo curl -L "https://github.com/docker/compose/releases/download/1.28.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+cd home/ec2-user/
 git clone https://github.com/traveller-scientist/docker-website.git
+echo "`ls -l`"
 cd docker-website
 chmod +x setup.sh
 chmod +x ssl_renew.sh
+echo "`ls -l`"
 echo END
