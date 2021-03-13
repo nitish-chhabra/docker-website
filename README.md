@@ -1,8 +1,8 @@
 # Wordpress Website using Docker and AWS EC2
 This repository contains the docker-compose and setup files to get a wordpress website running in no time through an EC2 machine from AWS.  
 This can also be from the Free-Tier of AWS machines.
-It sets up the latest wordpress image and mysql 5.7 and phpmyadmin along with Nginx Webserver.  
-It also has automatic SSL certificat renewal through certbot.  
+It sets up the LEMP Stack with latest wordpress, MySQL 8 and phpMyAdmin along with Nginx Webserver.  
+It also has automatic SSL certificate renewal through certbot.  
 All these services are defined through their own docker containers defined in the docker-compose.yaml file.  
  
 The first file to be used is the aws_start.sh file.  
