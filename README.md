@@ -7,7 +7,6 @@ You only need to know how to signup for a AWS Free-Tier account and follow very 
 This sets up the LEMP Stack with the latest Wordpress, MySQL, phpMyAdmin and Nginx Webserver containers.  
 The above stack is setup through docker containers using Alpine Linux images.  
 These reduce the size of the containers greatly and improve performance.  
-Note: If you would prefer to use an ubuntu image or use apache instead of Nginx, you will have to fork the repository.  
   
 This repository also sets up automatic SSL certificate renewal through certbot.  
 All these services are defined through their own docker containers defined in the docker-compose.yaml file.  
