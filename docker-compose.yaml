@@ -71,7 +71,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email teleportmygoods@gmail.com --agree-tos --no-eff-email --force-renewal -d munshi.ml -d www.munshi.ml
+    command: certonly --webroot --webroot-path=/var/www/html --email ${EMAIL} --agree-tos --no-eff-email --force-renewal -d  ${DOMAIN_NAME} -d www.${DOMAIN_NAME}
 networks: 
   wordpress:
     driver: bridge

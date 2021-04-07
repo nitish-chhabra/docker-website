@@ -37,7 +37,7 @@ foo@bar:~$ docker-website/setup.sh
 ```
 
 Ideally this step can also be added to the startup script but you need to update the .env values to your own values.  
-Please run the command only after you have updated your passwords and domain name inside the .env file.  
+Please run the command only after you have updated your passwords, domain name and email address inside the .env file.  
 
 This runs all the required docker containers for Nginx, Wordpress, MySQL, phpMyAdmin and certbot.  
 Initially it runs an nginx webserver without an SSL certificate and asks certbot service to fetch a certificate.  
